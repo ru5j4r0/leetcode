@@ -6,3 +6,4 @@ pub mod merge_sorted_array;
 pub mod pascals_triangle;
 pub mod reshape_the_matrix;
 pub mod two_sum;
+pub mod valid_sudoku;
