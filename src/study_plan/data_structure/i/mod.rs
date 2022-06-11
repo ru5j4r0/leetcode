@@ -9,4 +9,5 @@ pub mod ransom_note;
 pub mod reshape_the_matrix;
 pub mod search_a_2d_matrix;
 pub mod two_sum;
+pub mod valid_anagram;
 pub mod valid_sudoku;
