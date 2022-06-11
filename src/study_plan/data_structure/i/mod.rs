@@ -5,6 +5,7 @@ pub mod intersection_of_two_arrays_ii;
 pub mod maximum_subarray;
 pub mod merge_sorted_array;
 pub mod pascals_triangle;
+pub mod ransom_note;
 pub mod reshape_the_matrix;
 pub mod search_a_2d_matrix;
 pub mod two_sum;
