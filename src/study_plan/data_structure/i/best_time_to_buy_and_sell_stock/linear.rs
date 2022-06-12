@@ -18,17 +18,17 @@ pub fn max_profit(prices: Vec<i32>) -> i32 {
 
 #[cfg(test)]
 mod test_best_time_to_buy_and_sell_stock {
-    fn test(prices: Vec<i32>, res: i32) {
-        assert_eq!(super::max_profit(prices), res);
+    fn test<const N: usize>(prices: [i32; N], res: i32) {
+        assert_eq!(super::max_profit(Vec::from(prices)), res);
     }
 
     #[test]
     fn case1() {
-        test(vec![7, 1, 5, 3, 6, 4], 5);
+        test([7, 1, 5, 3, 6, 4], 5);
     }
 
     #[test]
     fn case2() {
-        test(vec![7, 6, 4, 3, 1], 0);
+        test([7, 6, 4, 3, 1], 0);
     }
 }

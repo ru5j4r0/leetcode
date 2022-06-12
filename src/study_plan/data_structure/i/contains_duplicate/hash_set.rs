@@ -14,22 +14,22 @@ pub fn contains_duplicate(nums: Vec<i32>) -> bool {
 
 #[cfg(test)]
 mod test_contains_duplicate {
-    fn test(nums: Vec<i32>, res: bool) {
-        assert_eq!(super::contains_duplicate(nums), res);
+    fn test<const N: usize>(nums: [i32; N], res: bool) {
+        assert_eq!(super::contains_duplicate(Vec::from(nums)), res);
     }
 
     #[test]
     fn case1() {
-        test(vec![1, 2, 3, 1], true);
+        test([1, 2, 3, 1], true);
     }
 
     #[test]
     fn case2() {
-        test(vec![1, 2, 3, 4], false);
+        test([1, 2, 3, 4], false);
     }
 
     #[test]
     fn case3() {
-        test(vec![1, 1, 1, 3, 3, 4, 3, 2, 4, 2], true);
+        test([1, 1, 1, 3, 3, 4, 3, 2, 4, 2], true);
     }
 }

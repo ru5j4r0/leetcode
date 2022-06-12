@@ -38,21 +38,25 @@ fn _intersect(nums1: &Vec<i32>, nums2: &Vec<i32>) -> Vec<i32> {
 
 #[cfg(test)]
 mod test_intersection_of_two_arrays_ii {
-    fn test(nums1: Vec<i32>, nums2: Vec<i32>, res: Vec<i32>) {
-        let mut nums = super::intersect(nums1, nums2);
+    fn test<const L: usize, const M: usize, const N: usize>(
+        nums1: [i32; L],
+        nums2: [i32; M],
+        res: [i32; N],
+    ) {
+        let mut nums = super::intersect(Vec::from(nums1), Vec::from(nums2));
         nums.sort_unstable();
-        let mut res = res;
+        let mut res = Vec::from(res);
         res.sort_unstable();
         assert_eq!(nums, res);
     }
 
     #[test]
     fn case1() {
-        test(vec![1, 2, 2, 1], vec![2, 2], vec![2, 2]);
+        test([1, 2, 2, 1], [2, 2], [2, 2]);
     }
 
     #[test]
     fn case2() {
-        test(vec![4, 9, 5], vec![9, 4, 9, 8, 4], vec![4, 9]);
+        test([4, 9, 5], [9, 4, 9, 8, 4], [4, 9]);
     }
 }

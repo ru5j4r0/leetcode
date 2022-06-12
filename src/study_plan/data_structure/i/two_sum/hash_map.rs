@@ -19,9 +19,9 @@ pub fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> {
 
 #[cfg(test)]
 mod test_two_sum {
-    fn test(nums: Vec<i32>, target: i32, res: Vec<i32>) {
-        let mut nums = super::two_sum(nums, target);
-        let mut res = res;
+    fn test<const M: usize, const N: usize>(nums: [i32; M], target: i32, res: [i32; N]) {
+        let mut nums = super::two_sum(Vec::from(nums), target);
+        let mut res = Vec::from(res);
         nums.sort_unstable();
         res.sort_unstable();
         assert_eq!(nums, res);
@@ -29,16 +29,16 @@ mod test_two_sum {
 
     #[test]
     fn case1() {
-        test(vec![2, 7, 11, 15], 9, vec![0, 1]);
+        test([2, 7, 11, 15], 9, [0, 1]);
     }
 
     #[test]
     fn case2() {
-        test(vec![3, 2, 4], 6, vec![1, 2]);
+        test([3, 2, 4], 6, [1, 2]);
     }
 
     #[test]
     fn case3() {
-        test(vec![3, 3], 6, vec![0, 1]);
+        test([3, 3], 6, [0, 1]);
     }
 }
