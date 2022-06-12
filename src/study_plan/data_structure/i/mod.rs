@@ -4,6 +4,7 @@ pub mod first_unique_character_in_a_string;
 pub mod intersection_of_two_arrays_ii;
 pub mod maximum_subarray;
 pub mod merge_sorted_array;
+pub mod merge_two_sorted_lists;
 pub mod pascals_triangle;
 pub mod ransom_note;
 pub mod reshape_the_matrix;
