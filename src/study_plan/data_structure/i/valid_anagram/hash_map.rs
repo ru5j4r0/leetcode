@@ -1,6 +1,5 @@
 use std::collections::HashMap;
 
-// impl Solution {
 pub fn is_anagram(s: String, t: String) -> bool {
     if s.len() != t.len() {
         return false;
@@ -26,4 +25,20 @@ pub fn is_anagram(s: String, t: String) -> bool {
 
     true
 }
-// }
+
+#[cfg(test)]
+mod test_valid_anagram {
+    fn test(s: &str, t: &str, res: bool) {
+        assert_eq!(super::is_anagram(s.to_string(), t.to_string()), res);
+    }
+
+    #[test]
+    fn case1() {
+        test("anagram", "nagaram", true);
+    }
+
+    #[test]
+    fn case2() {
+        test("rat", "car", false);
+    }
+}

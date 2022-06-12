@@ -1,4 +1,3 @@
-// impl Solution {
 pub fn merge(nums1: &mut Vec<i32>, m: i32, nums2: &mut Vec<i32>, n: i32) {
     if n == 0 {
         return;
@@ -36,4 +35,34 @@ pub fn merge(nums1: &mut Vec<i32>, m: i32, nums2: &mut Vec<i32>, n: i32) {
         };
     }
 }
-// }
+
+#[cfg(test)]
+mod test_merge_sorted_array {
+    fn test(nums1: Vec<i32>, m: i32, nums2: Vec<i32>, n: i32, res: Vec<i32>) {
+        let mut nums1 = nums1;
+        let mut nums2 = nums2;
+        super::merge(&mut nums1, m, &mut nums2, n);
+        assert_eq!(nums1, res);
+    }
+
+    #[test]
+    fn case1() {
+        test(
+            vec![1, 2, 3, 0, 0, 0],
+            3,
+            vec![2, 5, 6],
+            3,
+            vec![1, 2, 2, 3, 5, 6],
+        );
+    }
+
+    #[test]
+    fn case2() {
+        test(vec![1], 1, vec![], 0, vec![1]);
+    }
+
+    #[test]
+    fn case3() {
+        test(vec![0], 0, vec![1], 1, vec![1]);
+    }
+}

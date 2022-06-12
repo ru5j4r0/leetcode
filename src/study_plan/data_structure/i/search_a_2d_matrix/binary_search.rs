@@ -1,6 +1,5 @@
 use std::cmp::Ordering::*;
 
-// impl Solution {
 pub fn search_matrix(matrix: Vec<Vec<i32>>, target: i32) -> bool {
     let n = matrix[0].len();
     let size_1 = matrix.len() * n - 1;
@@ -35,4 +34,28 @@ pub fn search_matrix(matrix: Vec<Vec<i32>>, target: i32) -> bool {
 
     false
 }
-// }
+
+#[cfg(test)]
+mod test_search_a_2d_matrix {
+    fn test(matrix: Vec<Vec<i32>>, target: i32, res: bool) {
+        assert_eq!(super::search_matrix(matrix, target), res);
+    }
+
+    #[test]
+    fn case1() {
+        test(
+            vec![vec![1, 3, 5, 7], vec![10, 11, 16, 20], vec![23, 30, 34, 60]],
+            3,
+            true,
+        );
+    }
+
+    #[test]
+    fn case2() {
+        test(
+            vec![vec![1, 3, 5, 7], vec![10, 11, 16, 20], vec![23, 30, 34, 60]],
+            13,
+            false,
+        );
+    }
+}

@@ -1,6 +1,5 @@
 use std::collections::HashMap;
 
-// impl Solution {
 pub fn can_construct(ransom_note: String, magazine: String) -> bool {
     let mut map = HashMap::new();
 
@@ -22,4 +21,28 @@ pub fn can_construct(ransom_note: String, magazine: String) -> bool {
 
     true
 }
-// }
+
+#[cfg(test)]
+mod test_ransom_note {
+    fn test(ransom_note: &str, magazine: &str, res: bool) {
+        assert_eq!(
+            super::can_construct(ransom_note.to_string(), magazine.to_string()),
+            res
+        );
+    }
+
+    #[test]
+    fn case1() {
+        test("a", "b", false);
+    }
+
+    #[test]
+    fn case2() {
+        test("aa", "ab", false);
+    }
+
+    #[test]
+    fn case3() {
+        test("aa", "aab", true);
+    }
+}

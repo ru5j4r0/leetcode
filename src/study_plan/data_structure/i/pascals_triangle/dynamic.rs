@@ -1,4 +1,3 @@
-// impl Solution {
 pub fn generate(num_rows: i32) -> Vec<Vec<i32>> {
     let num_rows = num_rows as usize;
     let mut out = Vec::with_capacity(num_rows);
@@ -19,4 +18,29 @@ pub fn generate(num_rows: i32) -> Vec<Vec<i32>> {
 
     out
 }
-// }
+
+#[cfg(test)]
+mod test_pascals_triangle {
+    fn test(num_rows: i32, res: Vec<Vec<i32>>) {
+        assert_eq!(super::generate(num_rows), res);
+    }
+
+    #[test]
+    fn case1() {
+        test(
+            5,
+            vec![
+                vec![1],
+                vec![1, 1],
+                vec![1, 2, 1],
+                vec![1, 3, 3, 1],
+                vec![1, 4, 6, 4, 1],
+            ],
+        );
+    }
+
+    #[test]
+    fn case2() {
+        test(1, vec![vec![1]]);
+    }
+}
