@@ -7,6 +7,7 @@ pub mod merge_sorted_array;
 pub mod merge_two_sorted_lists;
 pub mod pascals_triangle;
 pub mod ransom_note;
+pub mod remove_linked_list_elements;
 pub mod reshape_the_matrix;
 pub mod search_a_2d_matrix;
 pub mod two_sum;
