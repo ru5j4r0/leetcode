@@ -18,7 +18,7 @@ pub fn first_uniq_char(s: String) -> i32 {
 }
 
 #[cfg(test)]
-mod test_first_unique_character_in_a_string {
+mod test {
     fn test(s: &str, res: i32) {
         assert_eq!(super::first_uniq_char(s.to_string()), res);
     }

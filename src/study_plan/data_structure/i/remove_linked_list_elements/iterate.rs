@@ -20,7 +20,7 @@ pub fn remove_elements(head: Option<Box<ListNode>>, val: i32) -> Option<Box<List
 }
 
 #[cfg(test)]
-mod test_remove_linked_list_elements {
+mod test {
     use super::ListNode;
 
     fn array_to_list<const N: usize>(arr: [i32; N]) -> Option<Box<ListNode>> {

@@ -24,7 +24,7 @@ pub fn merge_two_lists(
 }
 
 #[cfg(test)]
-mod test_merge_two_sorted_lists {
+mod test {
     use super::ListNode;
 
     fn array_to_list<const N: usize>(arr: [i32; N]) -> Option<Box<ListNode>> {

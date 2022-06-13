@@ -17,7 +17,7 @@ pub fn max_profit(prices: Vec<i32>) -> i32 {
 }
 
 #[cfg(test)]
-mod test_best_time_to_buy_and_sell_stock {
+mod test {
     fn test<const N: usize>(prices: [i32; N], res: i32) {
         assert_eq!(super::max_profit(Vec::from(prices)), res);
     }

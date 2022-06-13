@@ -77,7 +77,7 @@ fn search_col(row: &Vec<i32>, target: i32, n_1: usize) -> bool {
 }
 
 #[cfg(test)]
-mod test_search_a_2d_matrix {
+mod test {
     fn test<const N: usize>(matrix: [Vec<i32>; N], target: i32, res: bool) {
         assert_eq!(super::search_matrix(Vec::from(matrix), target), res);
     }

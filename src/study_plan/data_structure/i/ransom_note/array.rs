@@ -19,7 +19,7 @@ pub fn can_construct(ransom_note: String, magazine: String) -> bool {
 }
 
 #[cfg(test)]
-mod test_ransom_note {
+mod test {
     fn test(ransom_note: &str, magazine: &str, res: bool) {
         assert_eq!(
             super::can_construct(ransom_note.to_string(), magazine.to_string()),

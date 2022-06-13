@@ -37,7 +37,7 @@ pub fn merge(nums1: &mut Vec<i32>, m: i32, nums2: &mut Vec<i32>, n: i32) {
 }
 
 #[cfg(test)]
-mod test_merge_sorted_array {
+mod test {
     fn test<const L: usize, const M: usize, const N: usize>(
         nums1: [i32; L],
         m: i32,

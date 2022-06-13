@@ -45,7 +45,7 @@ fn new_vec() -> Vec<Vec<bool>> {
 }
 
 #[cfg(test)]
-mod test_valid_sudoku {
+mod test {
     fn test<const M: usize, const N: usize>(board: [[char; N]; M], res: bool) {
         assert_eq!(
             super::is_valid_sudoku(board.iter().map(|row| Vec::from(*row)).collect()),

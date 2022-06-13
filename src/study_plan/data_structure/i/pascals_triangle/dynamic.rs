@@ -20,7 +20,7 @@ pub fn generate(num_rows: i32) -> Vec<Vec<i32>> {
 }
 
 #[cfg(test)]
-mod test_pascals_triangle {
+mod test {
     fn test<const N: usize>(num_rows: i32, res: [Vec<i32>; N]) {
         assert_eq!(super::generate(num_rows), Vec::from(res));
     }

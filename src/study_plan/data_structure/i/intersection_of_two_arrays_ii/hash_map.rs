@@ -37,7 +37,7 @@ fn _intersect(nums1: &Vec<i32>, nums2: &Vec<i32>) -> Vec<i32> {
 }
 
 #[cfg(test)]
-mod test_intersection_of_two_arrays_ii {
+mod test {
     fn test<const L: usize, const M: usize, const N: usize>(
         nums1: [i32; L],
         nums2: [i32; M],

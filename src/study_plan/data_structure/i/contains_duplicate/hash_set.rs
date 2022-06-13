@@ -13,7 +13,7 @@ pub fn contains_duplicate(nums: Vec<i32>) -> bool {
 }
 
 #[cfg(test)]
-mod test_contains_duplicate {
+mod test {
     fn test<const N: usize>(nums: [i32; N], res: bool) {
         assert_eq!(super::contains_duplicate(Vec::from(nums)), res);
     }

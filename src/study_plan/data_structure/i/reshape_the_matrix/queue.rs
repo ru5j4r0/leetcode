@@ -31,7 +31,7 @@ pub fn matrix_reshape(mat: Vec<Vec<i32>>, r: i32, c: i32) -> Vec<Vec<i32>> {
 }
 
 #[cfg(test)]
-mod test_reshape_the_matrix {
+mod test {
     fn test<const M: usize, const N: usize>(
         mat: [Vec<i32>; M],
         r: i32,

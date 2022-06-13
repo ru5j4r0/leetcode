@@ -23,7 +23,7 @@ pub fn is_anagram(s: String, t: String) -> bool {
 }
 
 #[cfg(test)]
-mod test_valid_anagram {
+mod test {
     fn test(s: &str, t: &str, res: bool) {
         assert_eq!(super::is_anagram(s.to_string(), t.to_string()), res);
     }

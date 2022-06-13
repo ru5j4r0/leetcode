@@ -50,7 +50,7 @@ where
 }
 
 #[cfg(test)]
-mod test_maximum_subarray {
+mod test {
     fn test<const N: usize>(nums: [i32; N], res: i32) {
         assert_eq!(super::max_sub_array(Vec::from(nums)), res);
     }
