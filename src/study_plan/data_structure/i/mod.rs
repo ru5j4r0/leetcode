@@ -9,6 +9,7 @@ pub mod pascals_triangle;
 pub mod ransom_note;
 pub mod remove_linked_list_elements;
 pub mod reshape_the_matrix;
+pub mod reverse_linked_list;
 pub mod search_a_2d_matrix;
 pub mod two_sum;
 pub mod valid_anagram;
