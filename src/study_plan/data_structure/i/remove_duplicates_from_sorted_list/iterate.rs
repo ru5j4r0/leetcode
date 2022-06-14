@@ -8,15 +8,19 @@ pub fn delete_duplicates(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
     let mut head = head;
     let mut curr = head.as_mut().unwrap();
 
-    while let Some(next) = curr.next.as_mut() {
-        if curr.val == next.val {
-            curr.next = next.next.take();
-        } else {
-            curr = curr.next.as_mut().unwrap();
+    loop {
+        match curr.next.as_mut() {
+            Some(next) if curr.val == next.val => {
+                curr.next = next.next.take();
+            }
+            Some(_) => {
+                curr = curr.next.as_mut().unwrap();
+            }
+            None => {
+                return head;
+            }
         }
     }
-
-    head
 }
 
 #[cfg(test)]

@@ -1,5 +1,4 @@
 use super::list_node::ListNode;
-use std::mem::take;
 
 pub fn merge_two_lists(
     list1: Option<Box<ListNode>>,
@@ -7,27 +6,21 @@ pub fn merge_two_lists(
 ) -> Option<Box<ListNode>> {
     let mut list = None;
     let mut node = &mut list;
-    let mut list1 = list1;
-    let node1 = &mut list1;
-    let mut list2 = list2;
-    let node2 = &mut list2;
+    let mut node1 = list1;
+    let mut node2 = list2;
 
     while node1.is_some() && node2.is_some() {
         if node1.as_ref().unwrap().val <= node2.as_ref().unwrap().val {
-            *node = take(node1);
-            *node1 = take(&mut node.as_mut().unwrap().next);
+            *node = node1;
+            node1 = node.as_mut().unwrap().next.take();
         } else {
-            *node = take(node2);
-            *node2 = take(&mut node.as_mut().unwrap().next);
+            *node = node2;
+            node2 = node.as_mut().unwrap().next.take();
         }
         node = &mut node.as_mut().unwrap().next;
     }
 
-    *node = if node1.is_some() {
-        take(node1)
-    } else {
-        take(node2)
-    };
+    *node = if node1.is_some() { node1 } else { node2 };
 
     list
 }

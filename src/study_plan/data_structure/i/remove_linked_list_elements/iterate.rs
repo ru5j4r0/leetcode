@@ -2,15 +2,15 @@ use super::list_node::ListNode;
 
 pub fn remove_elements(head: Option<Box<ListNode>>, val: i32) -> Option<Box<ListNode>> {
     let mut head = head;
-    let mut node = &mut head;
+    let mut curr = &mut head;
 
     loop {
-        match node {
-            Some(n) if n.val == val => {
-                *node = n.next.take();
+        match curr {
+            Some(node) if node.val == val => {
+                *curr = node.next.take();
             }
-            Some(n) => {
-                node = &mut n.next;
+            Some(node) => {
+                curr = &mut node.next;
             }
             None => {
                 return head;
