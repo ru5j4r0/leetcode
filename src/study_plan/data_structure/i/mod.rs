@@ -1,6 +1,7 @@
 pub mod best_time_to_buy_and_sell_stock;
 pub mod contains_duplicate;
 pub mod first_unique_character_in_a_string;
+pub mod implement_queue_using_stacks;
 pub mod intersection_of_two_arrays_ii;
 pub mod maximum_subarray;
 pub mod merge_sorted_array;
