@@ -14,4 +14,5 @@ pub mod reverse_linked_list;
 pub mod search_a_2d_matrix;
 pub mod two_sum;
 pub mod valid_anagram;
+pub mod valid_parentheses;
 pub mod valid_sudoku;
