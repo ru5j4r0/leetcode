@@ -17,8 +17,10 @@ pub fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> {
 
 #[cfg(test)]
 mod test {
+    use super::*;
+
     fn test<const M: usize, const N: usize>(nums: [i32; M], target: i32, res: [i32; N]) {
-        let mut nums = super::two_sum(Vec::from(nums), target);
+        let mut nums = two_sum(Vec::from(nums), target);
         let mut res = Vec::from(res);
         nums.sort_unstable();
         res.sort_unstable();

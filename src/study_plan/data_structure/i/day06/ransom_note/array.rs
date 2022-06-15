@@ -20,9 +20,11 @@ pub fn can_construct(ransom_note: String, magazine: String) -> bool {
 
 #[cfg(test)]
 mod test {
+    use super::*;
+
     fn test(ransom_note: &str, magazine: &str, res: bool) {
         assert_eq!(
-            super::can_construct(ransom_note.to_string(), magazine.to_string()),
+            can_construct(ransom_note.to_string(), magazine.to_string()),
             res
         );
     }

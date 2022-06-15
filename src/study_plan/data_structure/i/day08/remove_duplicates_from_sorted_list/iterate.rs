@@ -22,7 +22,7 @@ pub fn delete_duplicates(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
 
 #[cfg(test)]
 mod test {
-    use super::ListNode;
+    use super::*;
 
     fn array_to_list<const N: usize>(arr: [i32; N]) -> Option<Box<ListNode>> {
         if N == 0 {
@@ -41,10 +41,7 @@ mod test {
     }
 
     fn test<const M: usize, const N: usize>(list: [i32; M], res: [i32; N]) {
-        assert_eq!(
-            super::delete_duplicates(array_to_list(list)),
-            array_to_list(res)
-        );
+        assert_eq!(delete_duplicates(array_to_list(list)), array_to_list(res));
     }
 
     #[test]

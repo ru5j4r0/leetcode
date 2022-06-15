@@ -37,8 +37,10 @@ pub fn search_matrix(matrix: Vec<Vec<i32>>, target: i32) -> bool {
 
 #[cfg(test)]
 mod test {
+    use super::*;
+
     fn test<const N: usize>(matrix: [Vec<i32>; N], target: i32, res: bool) {
-        assert_eq!(super::search_matrix(Vec::from(matrix), target), res);
+        assert_eq!(search_matrix(Vec::from(matrix), target), res);
     }
 
     #[test]

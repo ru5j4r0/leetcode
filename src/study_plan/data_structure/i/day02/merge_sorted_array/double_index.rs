@@ -38,6 +38,8 @@ pub fn merge(nums1: &mut Vec<i32>, m: i32, nums2: &mut Vec<i32>, n: i32) {
 
 #[cfg(test)]
 mod test {
+    use super::*;
+
     fn test<const L: usize, const M: usize, const N: usize>(
         nums1: [i32; L],
         m: i32,
@@ -47,7 +49,7 @@ mod test {
     ) {
         let mut nums1 = Vec::from(nums1);
         let mut nums2 = Vec::from(nums2);
-        super::merge(&mut nums1, m, &mut nums2, n);
+        merge(&mut nums1, m, &mut nums2, n);
         assert_eq!(nums1, Vec::from(res));
     }
 

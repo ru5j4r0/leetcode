@@ -16,8 +16,10 @@ pub fn max_sub_array(nums: Vec<i32>) -> i32 {
 
 #[cfg(test)]
 mod test {
+    use super::*;
+
     fn test<const N: usize>(nums: [i32; N], res: i32) {
-        assert_eq!(super::max_sub_array(Vec::from(nums)), res);
+        assert_eq!(max_sub_array(Vec::from(nums)), res);
     }
 
     #[test]

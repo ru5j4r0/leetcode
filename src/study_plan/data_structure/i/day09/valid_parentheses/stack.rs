@@ -17,8 +17,10 @@ pub fn is_valid(s: String) -> bool {
 
 #[cfg(test)]
 mod test {
+    use super::*;
+
     fn test(s: &str, res: bool) {
-        assert_eq!(super::is_valid(s.to_string()), res);
+        assert_eq!(is_valid(s.to_string()), res);
     }
 
     #[test]

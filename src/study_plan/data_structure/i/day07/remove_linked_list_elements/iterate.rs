@@ -21,7 +21,7 @@ pub fn remove_elements(head: Option<Box<ListNode>>, val: i32) -> Option<Box<List
 
 #[cfg(test)]
 mod test {
-    use super::ListNode;
+    use super::*;
 
     fn array_to_list<const N: usize>(arr: [i32; N]) -> Option<Box<ListNode>> {
         if N == 0 {
@@ -41,7 +41,7 @@ mod test {
 
     fn test<const M: usize, const N: usize>(head: [i32; M], val: i32, res: [i32; N]) {
         assert_eq!(
-            super::remove_elements(array_to_list(head), val),
+            remove_elements(array_to_list(head), val),
             array_to_list(res)
         );
     }

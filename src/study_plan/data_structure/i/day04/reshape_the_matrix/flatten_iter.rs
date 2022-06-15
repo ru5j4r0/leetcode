@@ -19,13 +19,15 @@ pub fn matrix_reshape(mat: Vec<Vec<i32>>, r: i32, c: i32) -> Vec<Vec<i32>> {
 
 #[cfg(test)]
 mod test {
+    use super::*;
+
     fn test<const M: usize, const N: usize>(
         mat: [Vec<i32>; M],
         r: i32,
         c: i32,
         res: [Vec<i32>; N],
     ) {
-        assert_eq!(super::matrix_reshape(Vec::from(mat), r, c), Vec::from(res));
+        assert_eq!(matrix_reshape(Vec::from(mat), r, c), Vec::from(res));
     }
 
     #[test]

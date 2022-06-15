@@ -27,7 +27,7 @@ pub fn merge_two_lists(
 
 #[cfg(test)]
 mod test {
-    use super::ListNode;
+    use super::*;
 
     fn array_to_list<const N: usize>(arr: [i32; N]) -> Option<Box<ListNode>> {
         if N == 0 {
@@ -51,7 +51,7 @@ mod test {
         output: [i32; N],
     ) {
         assert_eq!(
-            super::merge_two_lists(array_to_list(list1), array_to_list(list2)),
+            merge_two_lists(array_to_list(list1), array_to_list(list2)),
             array_to_list(output)
         );
     }

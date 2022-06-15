@@ -46,12 +46,14 @@ pub fn intersect(nums1: Vec<i32>, nums2: Vec<i32>) -> Vec<i32> {
 
 #[cfg(test)]
 mod test {
+    use super::*;
+
     fn test<const L: usize, const M: usize, const N: usize>(
         nums1: [i32; L],
         nums2: [i32; M],
         res: [i32; N],
     ) {
-        let mut nums = super::intersect(Vec::from(nums1), Vec::from(nums2));
+        let mut nums = intersect(Vec::from(nums1), Vec::from(nums2));
         nums.sort_unstable();
         let mut res = Vec::from(res);
         res.sort_unstable();

@@ -18,8 +18,10 @@ pub fn max_profit(prices: Vec<i32>) -> i32 {
 
 #[cfg(test)]
 mod test {
+    use super::*;
+
     fn test<const N: usize>(prices: [i32; N], res: i32) {
-        assert_eq!(super::max_profit(Vec::from(prices)), res);
+        assert_eq!(max_profit(Vec::from(prices)), res);
     }
 
     #[test]
