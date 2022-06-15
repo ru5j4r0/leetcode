@@ -5,8 +5,8 @@ pub fn is_valid_sudoku(board: Vec<Vec<char>>) -> bool {
     let mut cols = new_vec();
     let mut boxes = new_vec();
 
-    for i in 0..9 {
-        for j in 0..9 {
+    for (i, row) in rows.iter_mut().enumerate() {
+        for (j, col) in cols.iter_mut().enumerate() {
             let c = board[i][j];
 
             if c == '.' {
@@ -15,15 +15,15 @@ pub fn is_valid_sudoku(board: Vec<Vec<char>>) -> bool {
 
             let n = c as usize - ONE;
 
-            if rows[i][n] {
+            if row[n] {
                 return false;
             }
-            rows[i][n] = true;
+            row[n] = true;
 
-            if cols[j][n] {
+            if col[n] {
                 return false;
             }
-            cols[j][n] = true;
+            col[n] = true;
 
             let k = j / 3 + i / 3 * 3;
             if boxes[k][n] {

@@ -20,7 +20,7 @@ pub fn search_matrix(matrix: Vec<Vec<i32>>, target: i32) -> bool {
                 low = i + 1;
             }
             Greater => {
-                if i <= 0 {
+                if i == 0 {
                     return false;
                 }
                 high = i - 1;

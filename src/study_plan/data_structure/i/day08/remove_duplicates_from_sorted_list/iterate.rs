@@ -1,10 +1,7 @@
 use super::list_node::ListNode;
 
 pub fn delete_duplicates(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
-    if head.is_none() {
-        return None;
-    }
-
+    head.as_ref()?;
     let mut head = head;
     let mut curr = head.as_mut().unwrap();
 

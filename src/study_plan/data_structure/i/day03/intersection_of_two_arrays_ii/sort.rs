@@ -1,8 +1,10 @@
+use std::cmp::Ordering::*;
+
 pub fn intersect(nums1: Vec<i32>, nums2: Vec<i32>) -> Vec<i32> {
-    let mut nums1 = nums1.clone();
+    let mut nums1 = nums1;
     nums1.sort_unstable();
 
-    let mut nums2 = nums2.clone();
+    let mut nums2 = nums2;
     nums2.sort_unstable();
 
     let mut out = Vec::new();
@@ -15,23 +17,26 @@ pub fn intersect(nums1: Vec<i32>, nums2: Vec<i32>) -> Vec<i32> {
         let num1 = nums1[i1];
         let num2 = nums2[i2];
 
-        if num1 == num2 {
-            out.push(num1);
-
-            i1 += 1;
-            i2 += 1;
-            if i1 >= len1 || i2 >= len2 {
-                break;
+        match num1.cmp(&num2) {
+            Less => {
+                i1 += 1;
+                if i1 >= len1 {
+                    break;
+                }
             }
-        } else if num1 < num2 {
-            i1 += 1;
-            if i1 >= len1 {
-                break;
+            Greater => {
+                i2 += 1;
+                if i2 >= len2 {
+                    break;
+                }
             }
-        } else {
-            i2 += 1;
-            if i2 >= len2 {
-                break;
+            Equal => {
+                out.push(num1);
+                i1 += 1;
+                i2 += 1;
+                if i1 >= len1 || i2 >= len2 {
+                    break;
+                }
             }
         }
     }

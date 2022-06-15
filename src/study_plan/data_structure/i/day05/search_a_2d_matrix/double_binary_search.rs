@@ -8,7 +8,7 @@ pub fn search_matrix(matrix: Vec<Vec<i32>>, target: i32) -> bool {
     }
 }
 
-fn search_row(matrix: &Vec<Vec<i32>>, target: i32, n_1: usize) -> Option<usize> {
+fn search_row(matrix: &[Vec<i32>], target: i32, n_1: usize) -> Option<usize> {
     let m_1 = matrix.len() - 1;
     let mut low = 0;
     let mut high = m_1;
@@ -17,7 +17,7 @@ fn search_row(matrix: &Vec<Vec<i32>>, target: i32, n_1: usize) -> Option<usize> 
         let i = (high + low) / 2;
 
         if target < matrix[i][0] {
-            if i <= 0 {
+            if i == 0 {
                 return None;
             }
             high = i - 1;
@@ -42,7 +42,7 @@ fn search_row(matrix: &Vec<Vec<i32>>, target: i32, n_1: usize) -> Option<usize> 
     None
 }
 
-fn search_col(row: &Vec<i32>, target: i32, n_1: usize) -> bool {
+fn search_col(row: &[i32], target: i32, n_1: usize) -> bool {
     let mut low = 0;
     let mut high = n_1;
 
@@ -52,7 +52,7 @@ fn search_col(row: &Vec<i32>, target: i32, n_1: usize) -> bool {
 
         match value.cmp(&target) {
             Greater => {
-                if i <= 0 {
+                if i == 0 {
                     return false;
                 }
                 high = i - 1;

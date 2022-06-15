@@ -8,8 +8,8 @@ pub fn first_uniq_char(s: String) -> i32 {
         *map.entry(c).or_insert(0) += 1;
     }
 
-    for i in 0..s.len() {
-        if *map.get(&(bytes[i] as char)).unwrap() == 1 {
+    for (i, byte) in bytes.iter().enumerate() {
+        if *map.get(&(*byte as char)).unwrap() == 1 {
             return i as i32;
         }
     }

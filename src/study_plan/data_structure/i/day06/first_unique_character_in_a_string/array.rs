@@ -8,8 +8,8 @@ pub fn first_uniq_char(s: String) -> i32 {
         arr[c as usize - A] += 1;
     }
 
-    for i in 0..s.len() {
-        let j = bytes[i] as usize - A;
+    for (i, byte) in bytes.iter().enumerate() {
+        let j = *byte as usize - A;
         if arr[j] == 1 {
             return i as i32;
         }
