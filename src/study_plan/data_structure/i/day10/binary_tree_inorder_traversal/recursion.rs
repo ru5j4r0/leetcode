@@ -69,4 +69,14 @@ mod test {
     fn case1() {
         test([Some(1), None, Some(2), Some(3)], [1, 3, 2]);
     }
+
+    #[test]
+    fn case2() {
+        test([], []);
+    }
+
+    #[test]
+    fn case3() {
+        test([Some(1)], [1]);
+    }
 }

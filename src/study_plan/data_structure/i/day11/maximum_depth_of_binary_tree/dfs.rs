@@ -1,18 +1,29 @@
 use super::tree_node::TreeNode;
 use std::cell::RefCell;
+use std::cmp::max;
 use std::rc::Rc;
 
-pub fn postorder_traversal(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32> {
-    match root {
-        Some(val) => {
-            let mut node = val.borrow_mut();
-            let mut vec = postorder_traversal(node.left.take());
-            vec.append(&mut postorder_traversal(node.right.take()));
-            vec.append(&mut vec![node.val]);
-            vec
-        }
-        None => vec![],
+pub fn max_depth(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
+    if let Some(node) = root.as_ref() {
+        _max_depth(Rc::clone(node), 1)
+    } else {
+        0
     }
+}
+
+fn check_child(node: &Option<Rc<RefCell<TreeNode>>>, level: i32) -> i32 {
+    if let Some(left) = node.as_ref() {
+        _max_depth(Rc::clone(left), level + 1)
+    } else {
+        level
+    }
+}
+
+fn _max_depth(node: Rc<RefCell<TreeNode>>, level: i32) -> i32 {
+    max(
+        check_child(&node.borrow().left, level),
+        check_child(&node.borrow().right, level),
+    )
 }
 
 #[cfg(test)]
@@ -61,22 +72,20 @@ mod test {
         head
     }
 
-    fn test<const M: usize, const N: usize>(root: [Option<i32>; M], res: [i32; N]) {
-        assert_eq!(postorder_traversal(array_to_tree(root)), res);
+    fn test<const N: usize>(root: [Option<i32>; N], res: i32) {
+        assert_eq!(max_depth(array_to_tree(root)), res);
     }
 
     #[test]
     fn case1() {
-        test([Some(1), None, Some(2), Some(3)], [3, 2, 1]);
+        test(
+            [Some(3), Some(9), Some(20), None, None, Some(15), Some(7)],
+            3,
+        );
     }
 
     #[test]
     fn case2() {
-        test([], []);
-    }
-
-    #[test]
-    fn case3() {
-        test([Some(1)], [1]);
+        test([Some(1), None, Some(2)], 2);
     }
 }

@@ -2,17 +2,30 @@ use super::tree_node::TreeNode;
 use std::cell::RefCell;
 use std::rc::Rc;
 
-pub fn postorder_traversal(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32> {
-    match root {
-        Some(val) => {
-            let mut node = val.borrow_mut();
-            let mut vec = postorder_traversal(node.left.take());
-            vec.append(&mut postorder_traversal(node.right.take()));
-            vec.append(&mut vec![node.val]);
-            vec
-        }
-        None => vec![],
+pub fn level_order(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<Vec<i32>> {
+    if root.is_none() {
+        return vec![];
     }
+
+    let mut vec = Vec::new();
+    _level_order(Rc::clone(root.as_ref().unwrap()), 0, &mut vec);
+    vec
+}
+
+fn traverse_child(node: &Option<Rc<RefCell<TreeNode>>>, level: usize, vec: &mut Vec<Vec<i32>>) {
+    if node.is_some() {
+        _level_order(Rc::clone(node.as_ref().unwrap()), level + 1, vec);
+    }
+}
+
+fn _level_order(node: Rc<RefCell<TreeNode>>, level: usize, vec: &mut Vec<Vec<i32>>) {
+    if vec.len() == level {
+        vec.push(Vec::new());
+    }
+
+    vec[level].push(node.borrow().val);
+    traverse_child(&node.borrow().left, level, vec);
+    traverse_child(&node.borrow().right, level, vec);
 }
 
 #[cfg(test)]
@@ -61,22 +74,25 @@ mod test {
         head
     }
 
-    fn test<const M: usize, const N: usize>(root: [Option<i32>; M], res: [i32; N]) {
-        assert_eq!(postorder_traversal(array_to_tree(root)), res);
+    fn test<const M: usize, const N: usize>(root: [Option<i32>; M], res: [Vec<i32>; N]) {
+        assert_eq!(level_order(array_to_tree(root)), res);
     }
 
     #[test]
     fn case1() {
-        test([Some(1), None, Some(2), Some(3)], [3, 2, 1]);
+        test(
+            [Some(3), Some(9), Some(20), None, None, Some(15), Some(7)],
+            [vec![3], vec![9, 20], vec![15, 7]],
+        );
     }
 
     #[test]
     fn case2() {
-        test([], []);
+        test([Some(1)], [vec![1]]);
     }
 
     #[test]
     fn case3() {
-        test([Some(1)], [1]);
+        test([], []);
     }
 }

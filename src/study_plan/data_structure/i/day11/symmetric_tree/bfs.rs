@@ -2,16 +2,44 @@ use super::tree_node::TreeNode;
 use std::cell::RefCell;
 use std::rc::Rc;
 
-pub fn postorder_traversal(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32> {
-    match root {
-        Some(val) => {
-            let mut node = val.borrow_mut();
-            let mut vec = postorder_traversal(node.left.take());
-            vec.append(&mut postorder_traversal(node.right.take()));
-            vec.append(&mut vec![node.val]);
-            vec
+pub fn is_symmetric(root: Option<Rc<RefCell<TreeNode>>>) -> bool {
+    if root.is_none() {
+        return true;
+    }
+
+    let mut vec = Vec::new();
+    _level_order(root, 0, &mut vec);
+
+    println!("{:?}", vec);
+
+    for level in vec {
+        let len = level.len() / 2;
+        if !level.iter().take(len).eq(level.iter().rev().take(len)) {
+            return false;
         }
-        None => vec![],
+    }
+
+    true
+}
+
+fn _level_order(
+    node: Option<Rc<RefCell<TreeNode>>>,
+    level: usize,
+    vec: &mut Vec<Vec<Option<i32>>>,
+) {
+    if vec.len() == level {
+        vec.push(Vec::new());
+    }
+
+    match node {
+        Some(n) => {
+            vec[level].push(Some(n.borrow().val));
+            _level_order(n.borrow_mut().left.take(), level + 1, vec);
+            _level_order(n.borrow_mut().right.take(), level + 1, vec);
+        }
+        None => {
+            vec[level].push(None);
+        }
     }
 }
 
@@ -61,22 +89,31 @@ mod test {
         head
     }
 
-    fn test<const M: usize, const N: usize>(root: [Option<i32>; M], res: [i32; N]) {
-        assert_eq!(postorder_traversal(array_to_tree(root)), res);
+    fn test<const N: usize>(root: [Option<i32>; N], res: bool) {
+        assert_eq!(is_symmetric(array_to_tree(root)), res);
     }
 
     #[test]
     fn case1() {
-        test([Some(1), None, Some(2), Some(3)], [3, 2, 1]);
+        test(
+            [
+                Some(1),
+                Some(2),
+                Some(2),
+                Some(3),
+                Some(4),
+                Some(4),
+                Some(3),
+            ],
+            true,
+        );
     }
 
     #[test]
     fn case2() {
-        test([], []);
-    }
-
-    #[test]
-    fn case3() {
-        test([Some(1)], [1]);
+        test(
+            [Some(1), Some(2), Some(2), None, Some(3), None, Some(3)],
+            false,
+        );
     }
 }
